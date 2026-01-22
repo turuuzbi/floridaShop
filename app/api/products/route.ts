@@ -1,5 +1,14 @@
-import { prisma } from "@/lib/db";
+export const runtime = "nodejs";
 
-export const POST = async (req: Request) => {
-  const newProduct = await prisma;
-};
+import { prisma } from "@/lib/db";
+import { NextResponse } from "next/server";
+
+export async function POST(req: Request) {
+  const { productName, productImage, price } = await req.json();
+
+  const newProduct = await prisma.product.create({
+    data: { productName, productImage, price },
+  });
+
+  return NextResponse.json(newProduct);
+}
