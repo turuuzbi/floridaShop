@@ -1,6 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import {
   Heart,
   ShoppingCart,
@@ -113,43 +120,217 @@ const BloomeryWebsite = () => {
                 <ShoppingCart className="w-5 h-5 text-gray-600" />
               </button>
             </div>
+            <SignedOut>
+              <SignInButton>
+                <button className="text-black">log in</button>
+              </SignInButton>
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-black rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden ">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                <div>
-                  A bouquet shop that sells <br></br> Plushie Bouquets
-                </div>
-              </div>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                We reveal the beauty of nature in every bouquet. We create
-                arrangements that convey emotions and create special moments.
-              </p>
-              <button className="bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition transform hover:scale-105 shadow-lg">
-                Посмотреть новинки сезона
-              </button>
+        <div className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
+          {/* Top Left - Large Yellow Pansy */}
+          <div
+            className="absolute top-[5%] left-[8%] w-[280px] h-[280px]"
+            style={{
+              background:
+                "radial-gradient(circle at 30% 40%, #f4d03f 0%, #e8b923 30%, #8b6914 60%, #2d1810 100%)",
+              clipPath:
+                "polygon(50% 0%, 70% 20%, 90% 15%, 85% 35%, 95% 55%, 75% 60%, 70% 80%, 50% 70%, 30% 80%, 25% 60%, 5% 55%, 15% 35%, 10% 15%, 30% 20%)",
+              filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
+            }}
+          >
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-transparent"
+              style={{
+                clipPath:
+                  "polygon(50% 0%, 70% 20%, 90% 15%, 85% 35%, 95% 55%, 75% 60%, 70% 80%, 50% 70%, 30% 80%, 25% 60%, 5% 55%, 15% 35%, 10% 15%, 30% 20%)",
+              }}
+            />
+          </div>
+
+          {/* Top Center - Small Yellow Flowers with leaves */}
+          <div className="absolute top-[8%] left-[40%]">
+            <div
+              className="w-[100px] h-[100px]"
+              style={{
+                background:
+                  "radial-gradient(circle at 40% 40%, #f4d03f 0%, #d4a017 50%, #6b4423 100%)",
+                clipPath:
+                  "polygon(50% 10%, 61% 35%, 85% 35%, 65% 55%, 75% 80%, 50% 65%, 25% 80%, 35% 55%, 15% 35%, 39% 35%)",
+              }}
+            />
+            {/* Green leaves */}
+            <div className="absolute top-6 -right-12 w-20 h-8 bg-gradient-to-br from-[#4a6741] to-[#2d4028] rounded-full transform rotate-45" />
+            <div className="absolute top-10 -right-16 w-16 h-6 bg-gradient-to-br from-[#3d5736] to-[#243020] rounded-full transform rotate-25" />
+          </div>
+
+          {/* Top Right - Purple Pansy */}
+          <div
+            className="absolute top-[10%] right-[25%] w-[180px] h-[180px]"
+            style={{
+              background:
+                "radial-gradient(circle at 40% 40%, #5d3a7a 0%, #3d1f4d 50%, #1a0a24 100%)",
+              clipPath:
+                "polygon(50% 0%, 70% 20%, 90% 15%, 85% 35%, 95% 55%, 75% 60%, 70% 80%, 50% 70%, 30% 80%, 25% 60%, 5% 55%, 15% 35%, 10% 15%, 30% 20%)",
+            }}
+          />
+
+          {/* Left - Large Pink Peony */}
+          <div
+            className="absolute top-[20%] left-[2%] w-[380px] h-[380px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse at 40% 30%, #ffc9d9 0%, #ff8fb3 20%, #ff6b9d 40%, #e84a7a 60%, #b83560 80%, #8b2847 100%)",
+              filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.6))",
+            }}
+          >
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 60% 60%, rgba(255,255,255,0.3) 0%, transparent 40%)",
+              }}
+            />
+            {/* Peony layers */}
+            <div
+              className="absolute top-[15%] left-[15%] w-[70%] h-[70%] rounded-full opacity-60"
+              style={{
+                background:
+                  "radial-gradient(circle, #ffb3d9 0%, transparent 70%)",
+              }}
+            />
+          </div>
+
+          {/* Left Lower - Pink/White Striped Flower */}
+          <div
+            className="absolute top-[45%] left-[8%] w-[280px] h-[280px]"
+            style={{
+              background:
+                "linear-gradient(135deg, #ffd6e8 0%, #ffffff 15%, #ffb3d9 30%, #ffffff 45%, #ffc9e0 60%, #ffffff 75%, #ffd6e8 100%)",
+              clipPath:
+                "polygon(50% 10%, 60% 30%, 80% 25%, 75% 45%, 90% 60%, 70% 65%, 65% 85%, 50% 75%, 35% 85%, 30% 65%, 10% 60%, 25% 45%, 20% 25%, 40% 30%)",
+              filter: "drop-shadow(0 10px 25px rgba(0,0,0,0.5))",
+            }}
+          >
+            <div className="absolute top-[40%] left-[40%] w-[20%] h-[20%] rounded-full bg-gradient-to-br from-[#ff6b9d] to-[#d4145a]" />
+          </div>
+
+          {/* Right Top - Butterfly */}
+          <div
+            className="absolute top-[15%] right-[15%] w-[180px] h-[140px]"
+            style={{
+              background:
+                "linear-gradient(135deg, #d2691e 0%, #8b4513 30%, #654321 50%, #3d2817 100%)",
+              clipPath:
+                "polygon(50% 40%, 35% 20%, 15% 10%, 5% 25%, 10% 45%, 25% 50%, 30% 60%, 40% 55%, 50% 60%, 60% 55%, 70% 60%, 75% 50%, 90% 45%, 95% 25%, 85% 10%, 65% 20%)",
+              filter: "drop-shadow(0 8px 15px rgba(0,0,0,0.6))",
+            }}
+          >
+            {/* Butterfly patterns */}
+            <div className="absolute top-[20%] left-[15%] w-[15%] h-[15%] rounded-full bg-white opacity-60" />
+            <div className="absolute top-[20%] right-[15%] w-[15%] h-[15%] rounded-full bg-white opacity-60" />
+          </div>
+
+          {/* Right - Large Pink/White Hibiscus */}
+          <div
+            className="absolute top-[25%] right-[5%] w-[340px] h-[340px]"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, #ffffff 0%, #ffe6f0 20%, #ffcce0 40%, #ff99cc 60%, #e84a7a 100%)",
+              clipPath:
+                "polygon(50% 15%, 65% 25%, 80% 20%, 85% 35%, 95% 50%, 85% 65%, 80% 80%, 65% 75%, 50% 85%, 35% 75%, 20% 80%, 15% 65%, 5% 50%, 15% 35%, 20% 20%, 35% 25%)",
+              filter: "drop-shadow(0 12px 30px rgba(0,0,0,0.5))",
+            }}
+          >
+            {/* Hibiscus center stamen */}
+            <div className="absolute top-[35%] left-[35%] w-[30%] h-[30%]">
+              <div className="absolute top-[30%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-[#ff6b9d] to-[#d4145a]" />
+              <div className="absolute top-[20%] left-[35%] w-[8px] h-[15px] bg-[#ffeb3b] rounded-full" />
+              <div className="absolute top-[25%] left-[50%] w-[8px] h-[15px] bg-[#ffeb3b] rounded-full" />
+              <div className="absolute top-[35%] left-[60%] w-[8px] h-[15px] bg-[#ffeb3b] rounded-full" />
             </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-purple-200 to-purple-400 rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition duration-500">
-                <div className="text-9xl">🌷</div>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white p-6 rounded-2xl shadow-xl">
-                <div className="flex items-center gap-3">
-                  <Flower2 className="w-8 h-8 text-purple-500" />
-                  <div>
-                    <p className="font-semibold text-gray-900">
-                      Premium flowers
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          {/* Bottom Left - White Flower */}
+          <div
+            className="absolute bottom-[8%] left-[22%] w-[240px] h-[240px]"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%)",
+              clipPath:
+                "polygon(50% 20%, 60% 35%, 75% 30%, 80% 45%, 90% 55%, 80% 65%, 75% 75%, 60% 70%, 50% 80%, 40% 70%, 25% 75%, 20% 65%, 10% 55%, 20% 45%, 25% 30%, 40% 35%)",
+            }}
+          >
+            <div className="absolute top-[42%] left-[42%] w-[16%] h-[16%] rounded-full bg-gradient-to-br from-[#ffeb3b] to-[#ffa726]" />
+          </div>
+
+          {/* Bottom Center - Red/Orange Spiky Flower */}
+          <div
+            className="absolute bottom-[5%] left-[48%] w-[200px] h-[200px]"
+            style={{
+              background:
+                "radial-gradient(circle, #ff6347 0%, #ff4500 40%, #dc143c 100%)",
+              clipPath:
+                "polygon(50% 5%, 52% 25%, 60% 20%, 58% 30%, 70% 28%, 65% 38%, 78% 40%, 70% 48%, 80% 55%, 68% 58%, 75% 70%, 62% 68%, 65% 82%, 52% 75%, 50% 90%, 48% 75%, 35% 82%, 38% 68%, 25% 70%, 32% 58%, 20% 55%, 30% 48%, 22% 40%, 35% 38%, 30% 28%, 42% 30%, 40% 20%, 48% 25%)",
+              filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.5))",
+            }}
+          />
+
+          {/* Bottom Right - Large Yellow Gerbera */}
+          <div
+            className="absolute bottom-[2%] right-[8%] w-[320px] h-[320px]"
+            style={{
+              background:
+                "radial-gradient(circle, #ffeb3b 0%, #ffc107 30%, #ff9800 60%, #f57c00 100%)",
+              clipPath:
+                "polygon(50% 8%, 53% 28%, 58% 25%, 60% 32%, 65% 30%, 68% 37%, 73% 36%, 75% 43%, 80% 43%, 82% 50%, 85% 52%, 82% 58%, 80% 60%, 75% 62%, 73% 68%, 68% 68%, 65% 73%, 60% 72%, 58% 78%, 53% 76%, 50% 82%, 47% 76%, 42% 78%, 40% 72%, 35% 73%, 32% 68%, 27% 68%, 25% 62%, 20% 60%, 18% 58%, 15% 52%, 18% 50%, 20% 43%, 25% 43%, 27% 37%, 32% 36%, 35% 30%, 40% 32%, 42% 25%, 47% 28%)",
+              filter: "drop-shadow(0 15px 35px rgba(0,0,0,0.6))",
+            }}
+          >
+            <div className="absolute top-[42%] left-[42%] w-[16%] h-[16%] rounded-full bg-gradient-to-br from-[#8b4513] to-[#654321]" />
+          </div>
+
+          {/* Center Text */}
+          <div className="relative z-10 text-center">
+            <h1
+              className="text-white text-7xl font-serif tracking-wider mb-4"
+              style={{
+                fontFamily: "Playfair Display, serif",
+                letterSpacing: "0.1em",
+              }}
+            >
+              KUROHANA PAINTED
+            </h1>
+            <h2
+              className="text-white text-7xl font-serif tracking-wider mb-8"
+              style={{
+                fontFamily: "Playfair Display, serif",
+                letterSpacing: "0.1em",
+              }}
+            >
+              FLORALS COLLECTION
+            </h2>
+            <p
+              className="text-white text-4xl font-serif tracking-widest"
+              style={{
+                fontFamily: "Playfair Display, serif",
+                letterSpacing: "0.2em",
+              }}
+            >
+              FREE
+            </p>
           </div>
         </div>
       </section>
