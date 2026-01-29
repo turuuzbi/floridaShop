@@ -14,6 +14,27 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const allProducts = await prisma.product.findMany();
+  const allProducts = await prisma.product.findMany({});
   return NextResponse.json(allProducts);
+}
+
+export async function DELETE(req: Request) {
+  const body = await req.json().catch(() => null);
+
+  const id = body?.id;
+  if (!id || typeof id !== "string") {
+    return NextResponse.json({ message: "id is required" }, { status: 400 });
+  }
+
+  try {
+    const deletedProduct = await prisma.product.delete({
+      where: { id },
+    });
+    return NextResponse.json(deletedProduct);
+  } catch (e) {
+    return NextResponse.json(
+      { message: "product not found or already deleted" },
+      { status: 404 },
+    );
+  }
 }

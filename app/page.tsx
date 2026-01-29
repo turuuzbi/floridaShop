@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Cinzel_Decorative, Inter } from "next/font/google";
-import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignedOut, SignUpButton } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 const cinzel = Cinzel_Decorative({
